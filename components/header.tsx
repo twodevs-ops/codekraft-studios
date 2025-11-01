@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, MessageCircle } from "lucide-react";
+import Image from "next/image";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,12 +24,16 @@ const Header = () => {
       <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
         <div className="container-custom flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2 font-bold text-xl">
-            <div className="w-8 h-8 bg-linear-to-br from-primary to-secondary rounded-sm flex items-center justify-center text-primary-foreground font-bold">
-              CK
+            <div className="w-24 h-20 flex items-center justify-center mb-2">
+              <Image
+                src="/logo.png"
+                alt="Website mockup"
+                className="rounded-lg"
+                width={150}
+                height={160}
+                objectFit="cover"
+              />
             </div>
-            <span className="hidden sm:inline text-primary">
-              CodeKraft Studios
-            </span>
           </Link>
 
           {/* Desktop Navigation */}

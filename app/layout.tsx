@@ -27,6 +27,9 @@ export const metadata = {
       "Professional website design & development in Amritsar, Punjab. Affordable websites for local businesses. React, Next.js experts.",
     type: "website",
   },
+  icons: {
+    icon: "/logo.ico",
+  },
 };
 
 export default function RootLayout({
