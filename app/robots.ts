@@ -1,3 +1,4 @@
+import { COMPANY_WEBSITE } from "@/constants";
 import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
@@ -7,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/admin", "/api"],
     },
-    sitemap: "https://codekraftstudios.in/sitemap.xml",
+    sitemap: `${COMPANY_WEBSITE}/sitemap.xml`,
   };
 }

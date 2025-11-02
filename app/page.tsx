@@ -2,179 +2,21 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import {
-  Code2,
-  Smartphone,
-  ShoppingCart,
-  Search,
-  Wrench,
-  Palette,
-  Check,
-  Star,
-  ArrowRight,
-} from "lucide-react";
+import { Check, Star, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import {
+  pricingPlans,
+  process,
+  reasons,
+  services,
+  testimonials,
+  heroSection,
+  sectionTitles,
+  pricingSection,
+  ctaSection,
+} from "@/constants";
 
 export default function Home() {
-  const services = [
-    {
-      icon: Code2,
-      title: "Website Design & Development",
-      desc: "Custom, professional websites built with React & Next.js",
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile-Responsive Design",
-      desc: "Perfect on all devices - 100% optimized for mobile",
-    },
-    {
-      icon: ShoppingCart,
-      title: "E-commerce Solutions",
-      desc: "Online stores with payment gateway integration",
-    },
-    {
-      icon: Search,
-      title: "SEO Optimization",
-      desc: "Get found on Google - Local SEO for Amritsar",
-    },
-    {
-      icon: Wrench,
-      title: "Website Maintenance",
-      desc: "Keep your site running smoothly with expert support",
-    },
-    {
-      icon: Palette,
-      title: "Logo & Branding",
-      desc: "Complete brand identity and design systems",
-    },
-  ];
-
-  const reasons = [
-    {
-      title: "Local Expertise",
-      desc: "Based in Amritsar. Personal meetings, local support, same-day responses via WhatsApp.",
-    },
-    {
-      title: "Affordable Pricing",
-      desc: "Starting at ₹15,000. Transparent pricing, no hidden costs. UPI, Bank Transfer, Cash accepted.",
-    },
-    {
-      title: "Fast Delivery",
-      desc: "Your website ready in 2-3 weeks. Quick turnaround without compromising quality.",
-    },
-    {
-      title: "Technical Excellence",
-      desc: "9+ years combined experience. Expert in 15+ technologies: React, Next.js, Node.js, Python.",
-    },
-  ];
-
-  const testimonials = [
-    {
-      quote:
-        "CodeKraft Studios created our website in just 2 weeks. We're now getting 5-10 customer inquiries daily through our website. Highly recommend!",
-      author: "Rajesh Kumar",
-      business: "Amritsari Kulcha House",
-    },
-    {
-      quote:
-        "Professional work at affordable prices. The team understood exactly what our boutique needed. Sales have increased 30% since launch!",
-      author: "Priya Sharma",
-      business: "Shahi Designs Boutique",
-    },
-    {
-      quote:
-        "Best decision we made for our clinic. Patients can now book appointments online and find us easily. Very happy with the service!",
-      author: "Dr. Harpreet Singh",
-      business: "Singh Dental Clinic",
-    },
-  ];
-
-  const pricingPlans = [
-    {
-      name: "BASIC",
-      price: "₹15,000",
-      popular: false,
-      features: [
-        "5-7 pages website",
-        "Mobile responsive design",
-        "Contact form",
-        "WhatsApp integration",
-        "Google Maps integration",
-        "SSL certificate",
-        "Responsive design",
-        "Fast loading speed",
-        "Source code access",
-        "Full website ownership",
-        "3 months free support",
-        "Free 3 revision rounds",
-      ],
-      perfect: "Salons, Clinics, Small Shops",
-    },
-    {
-      name: "STANDARD",
-      price: "₹25,000",
-      popular: true,
-      features: [
-        "Everything in Basic",
-        "10-15 pages",
-        "Admin panel for updates",
-        "SEO optimization",
-        "Email setup",
-        "Image gallery/portfolio",
-        "Social media integration",
-        "Domain setup assistance",
-        "Google Analytics setup",
-        "Search Console setup",
-        "6 months free support",
-        "Free 3 revision rounds",
-      ],
-      perfect: "Restaurants, Boutiques, Coaching Centers",
-    },
-    {
-      name: "PREMIUM",
-      price: "Starting ₹40,000",
-      popular: false,
-      features: [
-        "Everything in Standard",
-        "E-commerce/Booking system",
-        "Payment gateway integration",
-        "Customer database",
-        "Advanced SEO optimization",
-        "Custom features",
-        "Analytics dashboard",
-        "Performance optimization",
-        "Monthly analytics reports",
-        "Priority support",
-        "1 year free support",
-        "Unlimited revisions (6 months)",
-      ],
-      perfect: "Hotels, Wedding Venues, Manufacturers",
-    },
-  ];
-
-  const process = [
-    {
-      step: "1",
-      title: "Discovery Call",
-      desc: "We discuss your business needs and goals. 15-minute free consultation.",
-    },
-    {
-      step: "2",
-      title: "Design & Development",
-      desc: "We create your custom website. Regular updates throughout.",
-    },
-    {
-      step: "3",
-      title: "Review & Launch",
-      desc: "You review, we refine. Then we launch your site.",
-    },
-    {
-      step: "4",
-      title: "Support & Grow",
-      desc: "Free support included. We help you grow your online presence.",
-    },
-  ];
-
   return (
     <main>
       <Header />
@@ -185,12 +27,10 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="heading-xl text-balance mb-6 text-primary">
-                Professional Websites That Drive Results
+                {heroSection.title}
               </h1>
               <p className="text-lg text-foreground/80 mb-8 text-balance">
-                Affordable, mobile-responsive websites that bring you more
-                customers. Starting at just ₹15,000. Same-day WhatsApp response
-                guaranteed.
+                {heroSection.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
@@ -198,7 +38,9 @@ export default function Home() {
                   size="lg"
                   className="bg-primary hover:bg-primary/90"
                 >
-                  <Link href="/portfolio">View Portfolio</Link>
+                  <Link href={heroSection.buttons.primary.href}>
+                    {heroSection.buttons.primary.text}
+                  </Link>
                 </Button>
                 <Button
                   asChild
@@ -206,29 +48,25 @@ export default function Home() {
                   variant="outline"
                   className="border-secondary text-secondary bg-transparent"
                 >
-                  <Link href="/contact">Get Free Quote</Link>
+                  <Link href={heroSection.buttons.secondary.href}>
+                    {heroSection.buttons.secondary.text}
+                  </Link>
                 </Button>
               </div>
               <div className="mt-12 grid grid-cols-3 gap-4 text-sm">
-                <div>
-                  <p className="font-bold text-primary">9+</p>
-                  <p className="text-foreground/70">Years Experience</p>
-                </div>
-                <div>
-                  <p className="font-bold text-primary">15+</p>
-                  <p className="text-foreground/70">Technologies</p>
-                </div>
-                <div>
-                  <p className="font-bold text-primary">2-3</p>
-                  <p className="text-foreground/70">Week Delivery</p>
-                </div>
+                {heroSection.stats.map((stat, idx) => (
+                  <div key={idx}>
+                    <p className="font-bold text-primary">{stat.value}</p>
+                    <p className="text-foreground/70">{stat.label}</p>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="hidden lg:block">
               <div className="bg-linear-to-br from-primary/10 to-secondary/10 rounded-lg h-96 flex items-center justify-center">
                 <Image
-                  src="/modern-laptop-showing-websites.png"
-                  alt="Website mockup"
+                  src={heroSection.image.src}
+                  alt={heroSection.image.alt}
                   className="rounded-lg"
                   width={600}
                   height={284}
@@ -244,7 +82,7 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-background">
         <div className="container-custom">
           <h2 className="heading-lg text-center mb-12 text-primary">
-            Services Built for Your Success
+            {sectionTitles.services}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, idx) => {
@@ -270,7 +108,7 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-primary/5">
         <div className="container-custom">
           <h2 className="heading-lg text-center mb-12 text-primary">
-            Why Businesses Choose CodeKraft Studios
+            {sectionTitles.whyChooseUs}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {reasons.map((reason, idx) => (
@@ -292,7 +130,7 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-background">
         <div className="container-custom">
           <h2 className="heading-lg text-center mb-12 text-primary">
-            Simple, Transparent Pricing
+            {sectionTitles.pricing}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {pricingPlans.map((plan, idx) => (
@@ -306,7 +144,7 @@ export default function Home() {
               >
                 {plan.popular && (
                   <div className="inline-block bg-secondary text-secondary-foreground text-xs font-bold px-3 py-1 rounded-full mb-4">
-                    Most Popular
+                    {pricingSection.labels.mostPopular}
                   </div>
                 )}
                 <h3 className="text-2xl font-bold text-primary mb-2">
@@ -314,7 +152,7 @@ export default function Home() {
                 </h3>
                 <p className="text-3xl font-bold mb-6">{plan.price}</p>
                 <p className="text-sm text-foreground/70 mb-6">
-                  Perfect for: {plan.perfect}
+                  {pricingSection.labels.perfectFor} {plan.perfect}
                 </p>
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, i) => (
@@ -332,32 +170,38 @@ export default function Home() {
                       : "bg-primary hover:bg-primary/90"
                   }`}
                 >
-                  <Link href="/contact">Get Started</Link>
+                  <Link href="/contact">{pricingSection.labels.getStarted}</Link>
                 </Button>
               </div>
             ))}
           </div>
           <div className="mt-16 bg-primary/5 p-8 rounded-lg">
             <h3 className="text-xl font-bold text-primary mb-6 text-center">
-              Flexible Payment Options
+              {pricingSection.paymentOptions.title}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
-                <h4 className="font-semibold mb-2">Payment Methods</h4>
+                <h4 className="font-semibold mb-2">
+                  {pricingSection.paymentOptions.methods.title}
+                </h4>
                 <p className="text-sm text-foreground/70">
-                  UPI (PhonePe, GPay), Bank Transfer, Cash, Cheque, Card
+                  {pricingSection.paymentOptions.methods.description}
                 </p>
               </div>
               <div className="text-center">
-                <h4 className="font-semibold mb-2">Payment Schedule</h4>
+                <h4 className="font-semibold mb-2">
+                  {pricingSection.paymentOptions.schedule.title}
+                </h4>
                 <p className="text-sm text-foreground/70">
-                  30% advance, 40% mid-project, 30% on launch
+                  {pricingSection.paymentOptions.schedule.description}
                 </p>
               </div>
               <div className="text-center">
-                <h4 className="font-semibold mb-2">Special Offer</h4>
+                <h4 className="font-semibold mb-2">
+                  {pricingSection.paymentOptions.offer.title}
+                </h4>
                 <p className="text-sm text-foreground/70">
-                  EMI available. 5% discount for upfront payment.
+                  {pricingSection.paymentOptions.offer.description}
                 </p>
               </div>
             </div>
@@ -369,7 +213,7 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-primary/5">
         <div className="container-custom">
           <h2 className="heading-lg text-center mb-12 text-primary">
-            How It Works - Simple & Transparent
+            {sectionTitles.process}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {process.map((item, idx) => (
@@ -394,7 +238,7 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-background">
         <div className="container-custom">
           <h2 className="heading-lg text-center mb-12 text-primary">
-            What Our Clients Say
+            {sectionTitles.testimonials}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, idx) => (
@@ -429,18 +273,18 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-linear-to-r from-primary to-secondary text-primary-foreground">
         <div className="container-custom text-center">
           <h2 className="heading-lg mb-4 text-primary-foreground">
-            Ready to Take Your Business Online?
+            {ctaSection.title}
           </h2>
           <p className="text-lg mb-8 text-primary-foreground/90">
-            Join 50+ businesses already growing with CodeKraft Studios
+            {ctaSection.description}
           </p>
           <Button
             asChild
             size="lg"
             className="bg-white text-primary hover:bg-primary-foreground"
           >
-            <Link href="/contact">
-              Get Free Consultation <ArrowRight className="w-4 h-4 ml-2" />
+            <Link href={ctaSection.buttonHref}>
+              {ctaSection.buttonText} <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </Button>
         </div>
