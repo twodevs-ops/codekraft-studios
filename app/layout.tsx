@@ -14,15 +14,13 @@ const _inter = Inter({
 });
 
 export const metadata = {
-  title:
-    "Website Development in Amritsar | CodeKraft Studios | Starting ₹15,000",
+  title: "Website Development in Amritsar | Webbox Studio | Starting ₹15,000",
   description:
     "Professional website design & development in Amritsar, Punjab. Affordable websites for local businesses. React, Next.js experts. Free consultation.",
   keywords:
     "website developer in Amritsar, web design Amritsar, website company Punjab, affordable website Amritsar, ecommerce website Amritsar, local web developer",
   openGraph: {
-    title:
-      "Website Development in Amritsar | CodeKraft Studios | Starting ₹15,000",
+    title: "Website Development in Amritsar | Webbox Studio | Starting ₹15,000",
     description:
       "Professional website design & development in Amritsar, Punjab. Affordable websites for local businesses. React, Next.js experts.",
     type: "website",
@@ -48,7 +46,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              name: "CodeKraft Studios",
+              name: "Webbox Studio",
               description: "Professional Website Development & Design Services",
               url: "https://codekraftstudios.com",
               telephone: "+919876543210",
