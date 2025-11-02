@@ -17,6 +17,7 @@ import {
   CheckCircle2,
   AlertCircle,
 } from "lucide-react";
+import { contactPageContent, contactInfo, contactFAQ } from "@/constants";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -49,20 +50,20 @@ export default function ContactPage() {
     const errors: Record<string, string> = {};
 
     if (!formData.name.trim()) {
-      errors.name = "Name is required";
+      errors.name = contactPageContent.form.validation.nameRequired;
     }
     if (!formData.phone.trim()) {
-      errors.phone = "Phone number is required";
+      errors.phone = contactPageContent.form.validation.phoneRequired;
     } else if (!/^[\d\s\-+()]+$/.test(formData.phone)) {
-      errors.phone = "Please enter a valid phone number";
+      errors.phone = contactPageContent.form.validation.phoneInvalid;
     }
     if (!formData.email.trim()) {
-      errors.email = "Email is required";
+      errors.email = contactPageContent.form.validation.emailRequired;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errors.email = "Please enter a valid email address";
+      errors.email = contactPageContent.form.validation.emailInvalid;
     }
     if (!formData.message.trim()) {
-      errors.message = "Message is required";
+      errors.message = contactPageContent.form.validation.messageRequired;
     }
 
     return errors;
@@ -95,7 +96,7 @@ export default function ContactPage() {
         message: "",
       });
     } catch (err) {
-      setError("Failed to send message. Please try again.");
+      setError(contactPageContent.form.messages.error);
     } finally {
       setLoading(false);
     }
@@ -109,10 +110,10 @@ export default function ContactPage() {
       <section className="pt-20 pb-16 md:pt-32 md:pb-24 bg-linear-to-b from-primary/5 to-transparent">
         <div className="container-custom">
           <h1 className="heading-xl text-primary mb-6 text-balance">
-            Get in Touch
+            {contactPageContent.hero.title}
           </h1>
           <p className="text-lg text-foreground/80">
-            Let&apso;s discuss how we can help your business grow online
+            {contactPageContent.hero.description}
           </p>
         </div>
       </section>
@@ -125,51 +126,59 @@ export default function ContactPage() {
             <div className="space-y-6">
               <div className="p-6 rounded-lg border hover:shadow-lg transition bg-card">
                 <Phone className="w-8 h-8 text-secondary mb-3" />
-                <h3 className="font-bold text-lg mb-2">Phone</h3>
+                <h3 className="font-bold text-lg mb-2">
+                  {contactPageContent.contactCards.phone.title}
+                </h3>
                 <a
-                  href="tel:+919876543210"
+                  href={`tel:${contactInfo.phone.link}`}
                   className="text-primary hover:underline"
                 >
-                  +91 98765 43210
+                  {contactInfo.phone.display}
                 </a>
               </div>
 
               <div className="p-6 rounded-lg border hover:shadow-lg transition bg-card">
                 <Mail className="w-8 h-8 text-secondary mb-3" />
-                <h3 className="font-bold text-lg mb-2">Email</h3>
+                <h3 className="font-bold text-lg mb-2">
+                  {contactPageContent.contactCards.email.title}
+                </h3>
                 <a
-                  href="mailto:hello@codekraftstudios.in"
+                  href={`mailto:${contactInfo.email.hello}`}
                   className="text-primary hover:underline"
                 >
-                  hello@codekraftstudios.in
+                  {contactInfo.email.hello}
                 </a>
               </div>
 
               <div className="p-6 rounded-lg border hover:shadow-lg transition bg-card">
                 <MapPin className="w-8 h-8 text-secondary mb-3" />
-                <h3 className="font-bold text-lg mb-2">Location</h3>
-                <p className="text-foreground/70">Amritsar, Punjab, India</p>
+                <h3 className="font-bold text-lg mb-2">
+                  {contactPageContent.contactCards.location.title}
+                </h3>
+                <p className="text-foreground/70">{contactInfo.location.full}</p>
               </div>
 
               <div className="p-6 rounded-lg border hover:shadow-lg transition bg-card">
                 <Clock className="w-8 h-8 text-secondary mb-3" />
-                <h3 className="font-bold text-lg mb-2">Office Hours</h3>
+                <h3 className="font-bold text-lg mb-2">
+                  {contactPageContent.contactCards.hours.title}
+                </h3>
                 <p className="text-foreground/70 text-sm">
-                  Monday - Saturday: 10:00 AM - 7:00 PM
+                  {contactInfo.officeHours.weekdays}
                   <br />
-                  Sunday: By appointment
+                  {contactInfo.officeHours.weekend}
                 </p>
               </div>
 
               <div className="pt-4">
                 <a
-                  href="https://wa.me/919876543210"
+                  href={contactInfo.whatsapp.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-4 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition w-full justify-center font-medium"
                 >
                   <MessageCircle className="w-5 h-5" />
-                  Chat on WhatsApp
+                  {contactPageContent.cta.whatsapp}
                 </a>
               </div>
             </div>
@@ -178,12 +187,12 @@ export default function ContactPage() {
             <div className="lg:col-span-2">
               <div className="rounded-lg border bg-card p-8">
                 <h2 className="text-2xl font-bold text-primary mb-6">
-                  Send us a Message
+                  {contactPageContent.form.title}
                 </h2>
                 {submitted && (
                   <div className="mb-6 p-4 rounded-lg bg-green-50 text-green-700 border border-green-200 flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" />
-                    <span>Thank you! We&apos;ll get back to you soon.</span>
+                    <span>{contactPageContent.form.messages.success}</span>
                   </div>
                 )}
                 {error && (
@@ -198,7 +207,7 @@ export default function ContactPage() {
                       <Input
                         type="text"
                         name="name"
-                        placeholder="Your Name *"
+                        placeholder={contactPageContent.form.placeholders.name}
                         value={formData.name}
                         onChange={handleChange}
                         aria-invalid={!!fieldErrors.name}
@@ -213,7 +222,7 @@ export default function ContactPage() {
                       <Input
                         type="tel"
                         name="phone"
-                        placeholder="Phone Number *"
+                        placeholder={contactPageContent.form.placeholders.phone}
                         value={formData.phone}
                         onChange={handleChange}
                         aria-invalid={!!fieldErrors.phone}
@@ -231,7 +240,7 @@ export default function ContactPage() {
                       <Input
                         type="email"
                         name="email"
-                        placeholder="Email Address *"
+                        placeholder={contactPageContent.form.placeholders.email}
                         value={formData.email}
                         onChange={handleChange}
                         aria-invalid={!!fieldErrors.email}
@@ -245,7 +254,9 @@ export default function ContactPage() {
                     <Input
                       type="text"
                       name="business"
-                      placeholder="Business Name"
+                      placeholder={
+                        contactPageContent.form.placeholders.business
+                      }
                       value={formData.business}
                       onChange={handleChange}
                     />
@@ -258,12 +269,11 @@ export default function ContactPage() {
                       onChange={handleChange}
                       className="px-4 py-2 rounded-lg border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                     >
-                      <option value="general">General Inquiry</option>
-                      <option value="website">Website Project</option>
-                      <option value="ecommerce">E-commerce Store</option>
-                      <option value="seo">SEO Services</option>
-                      <option value="maintenance">Maintenance Support</option>
-                      <option value="other">Other</option>
+                      {contactPageContent.form.types.map((type) => (
+                        <option key={type.value} value={type.value}>
+                          {type.label}
+                        </option>
+                      ))}
                     </select>
                     <select
                       name="service"
@@ -271,18 +281,20 @@ export default function ContactPage() {
                       onChange={handleChange}
                       className="px-4 py-2 rounded-lg border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                     >
-                      <option value="website">Website Design</option>
-                      <option value="ecommerce">E-commerce</option>
-                      <option value="seo">SEO</option>
-                      <option value="maintenance">Maintenance</option>
-                      <option value="branding">Branding</option>
+                      {contactPageContent.form.services.map((service) => (
+                        <option key={service.value} value={service.value}>
+                          {service.label}
+                        </option>
+                      ))}
                     </select>
                   </div>
 
                   <div>
                     <textarea
                       name="message"
-                      placeholder="Tell us about your project... *"
+                      placeholder={
+                        contactPageContent.form.placeholders.message
+                      }
                       value={formData.message}
                       onChange={handleChange}
                       rows={6}
@@ -301,7 +313,9 @@ export default function ContactPage() {
                     disabled={loading}
                     className="w-full bg-primary hover:bg-primary/90 text-lg py-6"
                   >
-                    {loading ? "Sending..." : "Send Message"}
+                    {loading
+                      ? contactPageContent.form.submitButton.loading
+                      : contactPageContent.form.submitButton.default}
                   </Button>
                 </form>
               </div>
@@ -332,26 +346,15 @@ export default function ContactPage() {
           </h2>
           <div className="max-w-3xl mx-auto">
             <div className="space-y-4">
-              {[
-                {
-                  q: "What is the typical project timeline?",
-                  a: "2-3 weeks for standard packages. Premium projects may take 4-6 weeks.",
-                },
-                {
-                  q: "Do you offer support after launch?",
-                  a: "Yes! Free support is included. Basic: 3 months, Standard: 6 months, Premium: 1 year.",
-                },
-                {
-                  q: "What if I need changes during development?",
-                  a: "We work closely with you throughout the process and include regular updates.",
-                },
-              ].map((item, idx) => (
+              {contactFAQ.map((item, idx) => (
                 <div
                   key={idx}
                   className="p-4 hover:shadow-lg transition bg-card rounded-lg border"
                 >
-                  <p className="font-semibold text-primary mb-2">{item.q}</p>
-                  <p className="text-foreground/70 text-sm">{item.a}</p>
+                  <p className="font-semibold text-primary mb-2">
+                    {item.question}
+                  </p>
+                  <p className="text-foreground/70 text-sm">{item.answer}</p>
                 </div>
               ))}
             </div>

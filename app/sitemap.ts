@@ -1,48 +1,54 @@
 import type { MetadataRoute } from "next";
+import {
+  COMPANY_WEBSITE,
+  CHANGE_FREQUENCY,
+  LAST_MODIFIED,
+  PRIORITY,
+} from "@/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://codekraftstudios.in",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
+      url: COMPANY_WEBSITE,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: CHANGE_FREQUENCY.MONTHLY,
+      priority: PRIORITY.HOME,
     },
     {
-      url: "https://codekraftstudios.in/services",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
+      url: `${COMPANY_WEBSITE}/services`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: CHANGE_FREQUENCY.WEEKLY,
+      priority: PRIORITY.SERVICES,
     },
     {
-      url: "https://codekraftstudios.in/portfolio",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
+      url: `${COMPANY_WEBSITE}/portfolio`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: CHANGE_FREQUENCY.WEEKLY,
+      priority: PRIORITY.PORTFOLIO,
     },
     {
-      url: "https://codekraftstudios.in/pricing",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
+      url: `${COMPANY_WEBSITE}/pricing`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: CHANGE_FREQUENCY.MONTHLY,
+      priority: PRIORITY.PRICING,
     },
     {
-      url: "https://codekraftstudios.in/about",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
+      url: `${COMPANY_WEBSITE}/about`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: CHANGE_FREQUENCY.MONTHLY,
+      priority: PRIORITY.ABOUT,
     },
     {
-      url: "https://codekraftstudios.in/contact",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
+      url: `${COMPANY_WEBSITE}/contact`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: CHANGE_FREQUENCY.MONTHLY,
+      priority: PRIORITY.CONTACT,
     },
     {
-      url: "https://codekraftstudios.in/blog",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
+      url: `${COMPANY_WEBSITE}/blog`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: CHANGE_FREQUENCY.WEEKLY,
+      priority: PRIORITY.BLOG,
     },
   ];
 }

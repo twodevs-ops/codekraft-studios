@@ -3,6 +3,13 @@ import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import {
+  teamMembers,
+  aboutPageContent,
+  technologies,
+  techSectionTitle,
+  comparisons,
+} from "@/constants";
 
 export default function AboutPage() {
   return (
@@ -13,11 +20,10 @@ export default function AboutPage() {
       <section className="pt-20 pb-16 md:pt-32 md:pb-24 bg-linear-to-b from-primary/5 to-transparent">
         <div className="container-custom">
           <h1 className="heading-xl text-primary mb-6 text-balance">
-            Meet the Team Behind CodeKraft Studios
+            {aboutPageContent.hero.title}
           </h1>
           <p className="text-lg text-foreground/80">
-            Two passionate developers with 9+ years of combined experience,
-            helping Amritsar businesses thrive online.
+            {aboutPageContent.hero.description}
           </p>
         </div>
       </section>
@@ -27,23 +33,14 @@ export default function AboutPage() {
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div>
-              <h2 className="heading-lg text-primary mb-6">Our Story</h2>
-              <p className="text-foreground/80 mb-4">
-                We started CodeKraft Studios with a simple mission: to make
-                professional websites accessible and affordable for every
-                Amritsar business.
-              </p>
-              <p className="text-foreground/80 mb-4">
-                Having worked with businesses of all sizes, we saw a gap in the
-                market. Local businesses deserved quality, affordable websites
-                without the corporate price tag. That&apos;s where CodeKraft
-                Studios comes in.
-              </p>
-              <p className="text-foreground/80">
-                Today, we&apos;re proudly serving Amritsar and Punjab,
-                delivering results that matter: more customers, more revenue,
-                more growth.
-              </p>
+              <h2 className="heading-lg text-primary mb-6">
+                {aboutPageContent.story.title}
+              </h2>
+              {aboutPageContent.story.paragraphs.map((paragraph, idx) => (
+                <p key={idx} className="text-foreground/80 mb-4">
+                  {paragraph}
+                </p>
+              ))}
             </div>
             <div className="bg-primary/10 rounded-lg h-96 flex items-center justify-center">
               <Image
@@ -60,42 +57,26 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <div className="p-8 rounded-lg border bg-card">
               <h3 className="text-2xl font-bold text-primary mb-4">
-                Our Partnership
+                {aboutPageContent.partnership.title}
               </h3>
               <p className="text-foreground/80 mb-4">
-                CodeKraft Studios is a partnership between two dedicated
-                developers combining frontend expertise with backend
-                optimization knowledge.
+                {aboutPageContent.partnership.description}
               </p>
               <p className="text-foreground/80">
-                Together, we bring 9+ years of professional experience,
-                creativity, and enterprise-grade technical skills to deliver
-                websites that look great and perform exceptionally.
+                {aboutPageContent.partnership.details}
               </p>
             </div>
             <div className="p-8 rounded-lg border bg-card">
               <h3 className="text-2xl font-bold text-primary mb-4">
-                Why Two Developers?
+                {aboutPageContent.whyTwo.title}
               </h3>
               <ul className="space-y-3 text-foreground/80">
-                <li className="flex gap-3">
-                  <span className="text-secondary font-bold">✓</span>
-                  <span>Faster project delivery and completion</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-secondary font-bold">✓</span>
-                  <span>Better code quality through peer review</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-secondary font-bold">✓</span>
-                  <span>Backup coverage - never delayed by illness</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-secondary font-bold">✓</span>
-                  <span>
-                    Combined expertise: frontend + backend + architecture
-                  </span>
-                </li>
+                {aboutPageContent.whyTwo.benefits.map((benefit, idx) => (
+                  <li key={idx} className="flex gap-3">
+                    <span className="text-secondary font-bold">✓</span>
+                    <span>{benefit}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -104,22 +85,18 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <div className="p-8 rounded-lg border bg-card">
               <h3 className="text-2xl font-bold text-primary mb-4">
-                Our Mission
+                {aboutPageContent.mission.title}
               </h3>
               <p className="text-foreground/80">
-                Making professional websites accessible and affordable for every
-                Amritsar business. We believe technology should serve
-                businesses, not complicate them.
+                {aboutPageContent.mission.description}
               </p>
             </div>
             <div className="p-8 rounded-lg border bg-card">
               <h3 className="text-2xl font-bold text-primary mb-4">
-                Our Vision
+                {aboutPageContent.vision.title}
               </h3>
               <p className="text-foreground/80">
-                Becoming Punjab&apos;s most trusted web development partner. We
-                want every local business to have the digital presence they
-                deserve.
+                {aboutPageContent.vision.description}
               </p>
             </div>
           </div>
@@ -130,34 +107,7 @@ export default function AboutPage() {
               Our Team
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {[
-                {
-                  name: "Lakshay Kapoor",
-                  role: "Full Stack Developer & Co-Founder",
-                  exp: "2.5+ years",
-                  skills: [
-                    "React",
-                    "Next.js",
-                    "Node.js",
-                    "Express",
-                    "Python",
-                    "Frontend Expert",
-                  ],
-                },
-                {
-                  name: "Amandeep Kochhar",
-                  role: "Senior Full Stack Developer & Co-Founder",
-                  exp: "6.5+ years",
-                  skills: [
-                    "React",
-                    "Angular",
-                    "Node.js",
-                    "System Architecture",
-                    "AWS",
-                    "Backend Optimization",
-                  ],
-                },
-              ].map((member, idx) => (
+              {teamMembers.map((member, idx) => (
                 <div
                   key={idx}
                   className="p-8 rounded-lg border text-center hover:shadow-lg transition bg-card"
@@ -170,7 +120,7 @@ export default function AboutPage() {
                     {member.role}
                   </p>
                   <p className="text-secondary font-semibold mb-6">
-                    {member.exp} professional experience
+                    {member.experience} professional experience
                   </p>
                   <div className="flex flex-wrap gap-2 justify-center">
                     {member.skills.map((skill, i) => (
@@ -193,23 +143,10 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 bg-primary/5">
         <div className="container-custom">
           <h2 className="heading-lg text-primary mb-12 text-center">
-            Expert in 15+ Technologies
+            {techSectionTitle}
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {[
-              { name: "React", category: "Frontend" },
-              { name: "Next.js", category: "Frontend" },
-              { name: "Angular", category: "Frontend" },
-              { name: "Node.js", category: "Backend" },
-              { name: "Express", category: "Backend" },
-              { name: "Python", category: "Backend" },
-              { name: "Flask", category: "Backend" },
-              { name: "PostgreSQL", category: "Database" },
-              { name: "MongoDB", category: "Database" },
-              { name: "Firebase", category: "Database" },
-              { name: "Tailwind CSS", category: "Styling" },
-              { name: "TypeScript", category: "Language" },
-            ].map((tech, idx) => (
+            {technologies.map((tech, idx) => (
               <div
                 key={idx}
                 className="text-center p-4 rounded-lg bg-white border hover:shadow-lg transition"
@@ -228,53 +165,33 @@ export default function AboutPage() {
       <section className="py-16 md:py-24">
         <div className="container-custom">
           <h2 className="heading-lg text-primary mb-12 text-center">
-            CodeKraft vs Others
+            {comparisons.title}
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="p-8 rounded-lg border bg-card">
               <h3 className="font-bold text-lg text-primary mb-4">
-                vs Freelancers
+                {comparisons.vsFreelancers.title}
               </h3>
               <ul className="space-y-3 text-sm text-foreground/80">
-                <li className="flex gap-3">
-                  <span className="text-secondary">✓</span>
-                  <span>Two developers (faster, backup coverage)</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-secondary">✓</span>
-                  <span>Professional business setup</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-secondary">✓</span>
-                  <span>Guaranteed delivery timelines</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-secondary">✓</span>
-                  <span>Structured process & support</span>
-                </li>
+                {comparisons.vsFreelancers.benefits.map((benefit, idx) => (
+                  <li key={idx} className="flex gap-3">
+                    <span className="text-secondary">✓</span>
+                    <span>{benefit}</span>
+                  </li>
+                ))}
               </ul>
             </div>
             <div className="p-8 rounded-lg border bg-card">
               <h3 className="font-bold text-lg text-primary mb-4">
-                vs Big Agencies
+                {comparisons.vsAgencies.title}
               </h3>
               <ul className="space-y-3 text-sm text-foreground/80">
-                <li className="flex gap-3">
-                  <span className="text-secondary">✓</span>
-                  <span>Direct communication with developers</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-secondary">✓</span>
-                  <span>50-70% lower costs</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-secondary">✓</span>
-                  <span>Personal attention to your project</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-secondary">✓</span>
-                  <span>Local Amritsar presence</span>
-                </li>
+                {comparisons.vsAgencies.benefits.map((benefit, idx) => (
+                  <li key={idx} className="flex gap-3">
+                    <span className="text-secondary">✓</span>
+                    <span>{benefit}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -285,17 +202,17 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 bg-linear-to-r from-primary to-secondary text-primary-foreground">
         <div className="container-custom text-center">
           <h2 className="heading-lg mb-4 text-primary-foreground">
-            Let&apos;s Work Together
+            {aboutPageContent.cta.title}
           </h2>
           <p className="text-lg mb-8 text-primary-foreground/90">
-            We&apos;re excited to help grow your business
+            {aboutPageContent.cta.description}
           </p>
           <Button
             asChild
             size="lg"
             className="bg-white text-primary hover:bg-primary-foreground"
           >
-            <Link href="/contact">Get in Touch Today</Link>
+            <Link href="/contact">{aboutPageContent.cta.buttonText}</Link>
           </Button>
         </div>
       </section>
